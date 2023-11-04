@@ -13,7 +13,7 @@ const page = ({ params }) => {
     setLoading(true);
     const { compare } = params;
     const { data } = await axios.get(
-      `http://localhost:3000/api/comparison/${compare}`
+      `https://deal-checker.vercel.app/api/comparison/${compare}`
     );
     setDataItem(data[0]);
     setLoading(false);

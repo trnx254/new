@@ -4,12 +4,11 @@ import React, { useState } from "react";
 
 const page = () => {
   const [search, setSearch] = useState("");
-  const router = useRouter()
-  
+  const router = useRouter();
 
   const handelSubmit = () => {
-    router.push(`search/${search}`)
-    setSearch("")
+    router.push(`search/${search}`);
+    setSearch("");
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -26,8 +25,8 @@ const page = () => {
         </span>
       </h1>
       <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-        Here at Flowbite we focus on markets where technology, innovation, and
-        capital can unlock long-term value and drive economic growth.
+        Here at Deal Checker we focus on markets where technology, innovation,
+        and capital can unlock long-term value and drive economic growth.
       </p>
 
       <div className="w-4/5 my-10">
@@ -75,11 +74,9 @@ const page = () => {
       </div>
 
       <p className="text-gray-500 dark:text-gray-400">
-        Track work across the enterprise through an open, collaborative
-        platform. Link issues across Jira and ingest data from other software
-        development tools, so your IT support and operations teams have richer
-        contextual information to rapidly respond to requests, incidents, and
-        changes.
+        Looking for a great deal on your next purchase? Check out Deal Checker,
+        the website that helps you compare prices and reviews from hundreds of
+        websites. You’ll never miss a bargain again!
       </p>
       <div className="inline-flex items-center justify-center w-full">
         <hr className="w-64 h-1 my-8 bg-gray-200 border-0 rounded dark:bg-gray-700" />
@@ -96,9 +93,19 @@ const page = () => {
         </div>
       </div>
       <p className="text-gray-500 dark:text-gray-400">
-        Deliver great service experiences fast - without the complexity of
-        traditional ITSM solutions.Accelerate critical development work,
-        eliminate toil.
+        Online shopping can be convenient and fun, but it can also be
+        overwhelming and expensive. How do you know if you are getting the best
+        price and quality for your products and services? That’s where Deal
+        Checker comes in. Deal Checker is a website that helps you find the best
+        deals online by comparing prices and reviews from hundreds of websites.
+        You can search for anything you want, from electronics to fashion to
+        travel, and see the best offers in seconds. You can also filter your
+        results by various criteria, such as market, language, safe search,
+        freshness, aspect ratio, and more. Deal Checker also shows you the
+        ratings and reviews from other customers, so you can make an informed
+        decision. Deal Checker is the ultimate online shopping assistant that
+        helps you save money, save time, and save hassle. Try it today and see
+        for yourself!
       </p>
     </main>
   );
