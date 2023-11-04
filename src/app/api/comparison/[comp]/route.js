@@ -90,7 +90,7 @@ const scraper = async (url) => {
 export async function GET(request, { params }) {
   const { comp } = params;
   const mainUrl = "https://www.google.com/shopping/product/";
-  const url = mainUrl + comp;
+  const url = mainUrl + comp + "?gl=in";
   const data = await scraper(url);
   return NextResponse.json(data);
 }

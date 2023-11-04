@@ -4,7 +4,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 const main_url = "https://www.google.com";
-const base_url = "https://www.google.com/search?tbm=shop&hl=en&q=";
+const base_url = "https://www.google.com/search?tbm=shop&gl=in&hl=en&q=";
 
 const scraper = async (url) => {
   const data = [];
