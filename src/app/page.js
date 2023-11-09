@@ -47,7 +47,7 @@ export default function Home() {
           The smart way to shop online.
         </h1>
         <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-          Find the best deals with Deal Checkeer, the ultimate online shopping
+          Find the best deals with Deal Checker, the ultimate online shopping
           assistant.
         </p>
         <Link
@@ -103,7 +103,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[50ch] text-sm opacity-50`}>
-            The API returns JSON. for
+            The API returns JSON format.
           </p>
         </a>
       </div>
