@@ -2,7 +2,6 @@ import Link from "next/link";
 import { GrCompare } from "react-icons/gr";
 
 const Card = (props) => {
-
   return (
     <div className="w-full max-w-xs mt-4 relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href={props.link} target="_blank">
