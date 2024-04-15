@@ -12,9 +12,7 @@ const page = ({ params }) => {
   const getData = async () => {
     setLoading(true);
     const { compare } = params;
-    const { data } = await axios.get(
-      `https://deal-checker.vercel.app/api/comparison/${compare}`
-    );
+    const { data } = await axios.get(`/api/comparison/${compare}`);
     setDataItem(data[0]);
     setLoading(false);
   };

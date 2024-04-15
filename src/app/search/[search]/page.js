@@ -15,9 +15,7 @@ const page = ({ params }) => {
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const { data } = await axios.get(
-        `https://deal-checker.vercel.app/api/item/${search}`
-      );
+      const { data } = await axios.get(`/api/item/${search}`);
       setData(data);
       setLoading(false);
     })();
