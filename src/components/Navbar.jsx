@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
     const router = useRouter();
@@ -113,9 +114,10 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <button onClick={() => signIn()}>
-                                    Sign out
+                                    Sign In
                                 </button>
                             </li>
+                            <ModeToggle/>
                         </ul>
                     </div>
                 </div>
