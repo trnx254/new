@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { ModeToggle } from "./ModeToggle";
+import { AuthToggle } from "./AuthToggle";
 
 const Navbar = () => {
     const router = useRouter();
@@ -107,17 +107,8 @@ const Navbar = () => {
                                     About
                                 </Link>
                             </li>
-                            <li>
-                                <button onClick={() => signOut()}>
-                                    Sign out
-                                </button>
-                            </li>
-                            <li>
-                                <button onClick={() => signIn()}>
-                                    Sign In
-                                </button>
-                            </li>
-                            <ModeToggle/>
+                            <AuthToggle />
+                            <ModeToggle />
                         </ul>
                     </div>
                 </div>
