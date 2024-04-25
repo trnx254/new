@@ -1,7 +1,22 @@
 import { NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request) {
+async function isTokenVerified(token, secretKey) {
+    try {
+        const secret = new TextEncoder().encode(process.env.TOKEN_SECRET);
+        const decoded = await jwtVerify(token, secret, {
+            issuer: "urn:dealChecker:issuer",
+            audience: "urn:user:audience",
+        });
+        return !!decoded; // Check if token is valid and not expired
+    } catch (error) {
+        console.error("Error verifying token:", error);
+        return false;
+    }
+}
+
+// Your middleware function
+export async function middleware(request) {
     const path = request.nextUrl.pathname;
     const isPublicPath =
         path === "/login" ||
@@ -10,12 +25,18 @@ export function middleware(request) {
         path === "/forgotpassword" ||
         path === "/";
     const token = request.cookies.get("token")?.value || "";
-    console.log("token : ", token);
 
-    if (isPublicPath && token) {
+    if (
+        isPublicPath &&
+        token &&
+        (await isTokenVerified(token, process.env.TOKEN_SECRET))
+    ) {
         return NextResponse.redirect(new URL("/", request.nextUrl));
     }
-    if (!isPublicPath && !token) {
+    if (
+        !isPublicPath &&
+        (!token || !(await isTokenVerified(token, process.env.TOKEN_SECRET)))
+    ) {
         return NextResponse.redirect(new URL("/login", request.nextUrl));
     }
 }

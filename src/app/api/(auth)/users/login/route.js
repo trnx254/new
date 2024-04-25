@@ -2,10 +2,26 @@ import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
 import Redis from "ioredis";
+import { SignJWT } from "jose";
 
 connect();
+
+const createToken = async (payload) => {
+    const secret = new TextEncoder().encode(process.env.TOKEN_SECRET);
+    const alg = "HS256";
+
+    const jwt = await new SignJWT(payload)
+        .setProtectedHeader({ alg })
+        .setIssuedAt(new Date())
+        .setIssuer("urn:dealChecker:issuer")
+        .setAudience("urn:user:audience")
+        .setExpirationTime("1d")
+        .sign(secret);
+
+    console.log(jwt);
+    return jwt;
+};
 
 export async function POST(request) {
     try {
@@ -16,7 +32,7 @@ export async function POST(request) {
 
         // Check if user exists in Redis cache
         const cachedUser = await redis.get(email);
-        
+
         if (cachedUser) {
             console.log("Cached user: " + cachedUser);
             const user = JSON.parse(cachedUser);
@@ -33,9 +49,8 @@ export async function POST(request) {
                     username: user.username,
                     email: user.email,
                 };
-                const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, {
-                    expiresIn: "1d",
-                });
+                const token = await createToken(tokenData);
+
                 const response = NextResponse.json({
                     message: "Login successful",
                     success: true,
@@ -77,9 +92,7 @@ export async function POST(request) {
         };
 
         //Create token
-        const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, {
-            expiresIn: "1d",
-        });
+        const token = await createToken(tokenData);
 
         //Sent token to user cookies
         const response = NextResponse.json({

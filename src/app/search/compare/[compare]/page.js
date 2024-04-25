@@ -5,10 +5,12 @@ import DetailsLoading from "@/components/DetailsLoading";
 import axios from "axios";
 
 import React, { useEffect, useState } from "react";
+import FavoriteIcon from "@/components/FavoriteIcon";
 
 const Page = ({ params }) => {
     const [dataItem, setDataItem] = useState({});
     const [loading, setLoading] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const getData = async () => {
         setLoading(true);
@@ -21,6 +23,28 @@ const Page = ({ params }) => {
         getData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const handleFavoriteClick = async () => {
+        try {
+            // Replace 'userId' and 'itemId' with actual user and item IDs
+            const userId = "userId";
+            const itemId = "itemId";
+
+            // Toggle favorite state locally
+            setIsFavorite((prev) => !prev);
+
+            // Send API request to add/remove item from favorites
+            // if (!isFavorite) {
+            //     await axios.post("/api/favorites/add", { userId, itemId });
+            // } else {
+            //     await axios.post("/api/favorites/remove", { userId, itemId });
+            // }
+        } catch (error) {
+            console.error("Error handling favorite:", error);
+            // Handle error (e.g., show error message)
+        }
+    };
+
     return (
         <>
             {loading ? (
@@ -34,9 +58,16 @@ const Page = ({ params }) => {
 
                         <div className="p-5 px-2 w-screen text-2xl font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                             {dataItem.title}
-                            <p className="mt-1 text-lg font-normal text-gray-500 dark:text-gray-400">
+                            <p className="mt-1 flex justify-between text-lg font-normal text-gray-500 dark:text-gray-400">
                                 {dataItem.review}
                                 {dataItem.reviewOutOf}
+                                <span>
+                                    <FavoriteIcon
+                                        filled={isFavorite}
+                                        size={24}
+                                        onClick={handleFavoriteClick}
+                                    />
+                                </span>
                             </p>
                         </div>
                     </div>
