@@ -27,6 +27,10 @@ export function AuthToggle() {
         router.push("/profile");
     };
 
+    const handelFavorite = () => {
+        router.push("/profile/favorite");
+    };
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -38,6 +42,9 @@ export function AuthToggle() {
             <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={handelProfile}>
                     Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={handelFavorite}>
+                    Favorite
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={handelLogout}>
                     Logout

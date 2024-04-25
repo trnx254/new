@@ -23,7 +23,8 @@ export async function middleware(request) {
         path === "/signup" ||
         path === "/verifyemail" ||
         path === "/forgotpassword" ||
-        path === "/";
+        path === "/" ||
+        path === "/about";
     const token = request.cookies.get("token")?.value || "";
 
     if (

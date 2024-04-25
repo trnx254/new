@@ -6,6 +6,7 @@ import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 import FavoriteIcon from "@/components/FavoriteIcon";
+import { getDataFromToken } from "@/helpers/getDataFromToken";
 
 const Page = ({ params }) => {
     const [dataItem, setDataItem] = useState({});
@@ -15,6 +16,12 @@ const Page = ({ params }) => {
     const getData = async () => {
         setLoading(true);
         const { compare } = params;
+        const body = {
+            productId: compare,}
+        const res = await axios.post("/api/favorites/check", body);
+        if (res.data.data) {
+            setIsFavorite(res.data.data);
+        }
         const { data } = await axios.get(`/api/comparison/${compare}`);
         setDataItem(data[0]);
         setLoading(false);
@@ -26,19 +33,26 @@ const Page = ({ params }) => {
 
     const handleFavoriteClick = async () => {
         try {
-            // Replace 'userId' and 'itemId' with actual user and item IDs
-            const userId = "userId";
-            const itemId = "itemId";
+            const { compare } = params;
+            const item = {
+                productId: compare,
+                productName: dataItem.title,
+                review: dataItem.review,
+                reviewOutOf: dataItem.reviewOutOf,
+                imgLink: dataItem.imgLink,
+            };
 
             // Toggle favorite state locally
             setIsFavorite((prev) => !prev);
 
             // Send API request to add/remove item from favorites
-            // if (!isFavorite) {
-            //     await axios.post("/api/favorites/add", { userId, itemId });
-            // } else {
-            //     await axios.post("/api/favorites/remove", { userId, itemId });
-            // }
+            if (!isFavorite) {
+                const res = await axios.post("/api/favorites/add", item);
+                toast.success(res.message);
+            } else {
+                const res = await axios.post("/api/favorites/remove", item);
+                toast.success(res.message);
+            }
         } catch (error) {
             console.error("Error handling favorite:", error);
             // Handle error (e.g., show error message)

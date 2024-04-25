@@ -25,7 +25,6 @@ export async function POST(request) {
         user.forgotPasswordTokenExpiry = undefined;
         await user.save();
 
-        console.log(user);
         return NextResponse.json({
             message: "User Found",
             success: true,

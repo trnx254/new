@@ -10,13 +10,11 @@ export async function POST(request) {
     try {
         const reqBody = await request.json();
         const { token, password } = reqBody;
-        console.log(token, password);
 
         const user = await User.findOne({
             forgotPasswordToken: token,
             forgotPasswordTokenExpiry: { $gt: Date.now() },
         });
-        console.log(user);
         if (!user) {
             return NextResponse.json(
                 { error: "Invalid Token" },

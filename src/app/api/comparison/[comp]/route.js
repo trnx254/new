@@ -12,7 +12,6 @@ const scraper = async (url, comp) => {
         const cachedData = await redis.get(comp);
 
         if (cachedData) {
-            console.log("Data Found From Cache");
             return JSON.parse(cachedData);
         }
 

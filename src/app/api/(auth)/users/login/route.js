@@ -19,7 +19,6 @@ const createToken = async (payload) => {
         .setExpirationTime("1d")
         .sign(secret);
 
-    console.log(jwt);
     return jwt;
 };
 
@@ -28,13 +27,11 @@ export async function POST(request) {
         const redis = new Redis(process.env.REDIS_URI);
         const reqBody = await request.json();
         const { email, password } = reqBody;
-        console.log(reqBody);
 
         // Check if user exists in Redis cache
         const cachedUser = await redis.get(email);
 
         if (cachedUser) {
-            console.log("Cached user: " + cachedUser);
             const user = JSON.parse(cachedUser);
 
             // Validate password
@@ -63,7 +60,6 @@ export async function POST(request) {
         }
 
         //Check if user is exists
-        console.log("User Not Found in Redis.");
         const user = await User.findOne({ email });
         if (!user) {
             return NextResponse.json(
