@@ -2,9 +2,9 @@
 import React, { useEffect } from "react";
 
 import Card from "@/components/Card";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
 import axios from "axios";
 import { useState } from "react";
+import LoadingSkeletonWithOutImg from "@/components/LoadingSkeletonWithOutImg";
 
 const Page = ({ params }) => {
     const { search } = params;
@@ -27,16 +27,22 @@ const Page = ({ params }) => {
                 <>
                     {/* <h1 className="mx-5 p-3 text-2xl">Searching.............</h1> */}
                     <div className="flex-wrap flex justify-evenly w-fit">
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
-                        <LoadingSkeleton />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
+                        <LoadingSkeletonWithOutImg />
                     </div>
                 </>
             ) : (

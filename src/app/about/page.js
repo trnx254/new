@@ -11,11 +11,11 @@
               Hello I am,<br />
             </span>{" "}
             <p className="mt-5">
-            Chandan Pradhan
+            {process.env.NAME}
             </p>
           </h1>
           <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-          Student at Veer Surendra Sai University Of Technology currently pursuing MCA, looking forward for quality experience in promising domains. Always ready for new opportunities.
+          {process.env.DESCRIPTION}
           </p>
         </div>
         <div className="relative mx-auto my-3 border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[454px] max-w-[341px] md:h-[682px] md:max-w-[512px]">

@@ -17,7 +17,8 @@ const Page = ({ params }) => {
         setLoading(true);
         const { compare } = params;
         const body = {
-            productId: compare,}
+            productId: compare,
+        };
         const res = await axios.post("/api/favorites/check", body);
         if (res.data.data) {
             setIsFavorite(res.data.data);
@@ -37,8 +38,8 @@ const Page = ({ params }) => {
             const item = {
                 productId: compare,
                 productName: dataItem.title,
-                review: dataItem.review,
-                reviewOutOf: dataItem.reviewOutOf,
+                review: dataItem.review || "No review available",
+                reviewOutOf: dataItem.reviewOutOf || "No Data",
                 imgLink: dataItem.imgLink,
             };
 
