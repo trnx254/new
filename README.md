@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Deal Checker
 
-## Getting Started
+Deal Checker is an innovative web application designed to simplify the online shopping experience for users in India. By aggregating product information from multiple e-commerce platforms, Deal Checker empowers users to compare prices, delivery options, and product details in real-time, all in one convenient location.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   **Real-Time Data**: Get up-to-date product information from various online retailers.
+-   **Dynamic Search**: Easily search for products and receive comprehensive results from across the web.
+-   **Price Comparison**: Compare prices and delivery details from different retailers to make informed purchasing decisions.
+-   **Personalization**: Create accounts, save favorite products, and receive personalized recommendations.
+-   **Seamless Integration**: Effortlessly integrate with popular e-commerce websites for a hassle-free shopping experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+To run Deal Checker locally, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone this repository to your local machine.
+    ```bash
+    git clone https://github.com/chandanPradhan09/College-Project-Minor.git
+    ```
+2. Navigate to the project directory.
+    ```bash
+    cd deal-checker
+    ```
+3. Install dependencies.
+    ```bash
+    npm install
+    ```
+4. Create a .env.local file in the root directory and add the following environment variables:
 
-## Learn More
+    ```plaintext
+    TOKEN_SECRET=your_jwt_secret
+    MONGO_URI=your_mongo_atlas_url
+    EMAIL_USER=your_email_id
+    EMAIL_PASS=your_email_password
+    DOMAIN=your_app_link_after_deployment
 
-To learn more about Next.js, take a look at the following resources:
+    REDIS_URI=your_redis_url
+    NAME=your_name
+    DESCRIPTION=your_description
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    - Replace the placeholder values with your actual credentials.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Run the development server.
+    ```bash
+    npm run dev
+    ```
+    - Open your browser and navigate to http://localhost:3000 to access Deal Checker.
 
-## Deploy on Vercel
+## About
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Deal Checker](public/img.jpg)
+Deal Checker was created by Chandan Pradhan, a passionate developer dedicated to simplifying the online shopping experience. With a focus on user-centric design and seamless integration, Deal Checker aims to revolutionize the way users shop online in India.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For more information, visit [Deal Checker Live Deployment.](https://deal-checker.vercel.app)
+
+---
+
+**Disclaimer:** Deal Checker is not affiliated with any of the e-commerce platforms mentioned. All product information provided is sourced from publicly available data on the internet.

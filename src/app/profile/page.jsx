@@ -49,7 +49,7 @@ export default function ProfilePage() {
                 <CardContent className="grid gap-4">
                     <div className="grid gap-2">
                         <Button onClick={getUserDetails}>
-                            Get User Detailes
+                            Get User Details
                         </Button>
                         <Button variant="outline" onClick={logout}>
                             Logout

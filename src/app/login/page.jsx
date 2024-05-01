@@ -16,6 +16,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
+import ResendTokenVerify from "@/components/ResendTokenVerify";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -24,6 +26,14 @@ export default function LoginPage() {
         password: "",
     });
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleResend = async () => {
+        const email = { email: user.email };
+        // Add logic here to resend verification
+        await axios.post("/api/users/resend", email);
+        toast.success("Verification Link resent successfully!");
+    };
 
     const onLogin = async () => {
         try {
@@ -32,7 +42,11 @@ export default function LoginPage() {
             toast.success("Login Successfull");
             router.push("/profile");
         } catch (error) {
-            toast.error("Email or Password is incorrect", error.message);
+            if (error.response.data.message === "User not Verified. Please Verify."){
+                toast.custom(<ResendTokenVerify handleResend={handleResend}/>)
+            } else {
+                toast.error("Email or Password is incorrect", error.message);
+            }
         } finally {
             setLoading(false);
         }
@@ -66,16 +80,22 @@ export default function LoginPage() {
                             Forgot Password
                         </Link>
                     </div>
-                    <div className="grid gap-2">
+                    <div className="grid gap-2 relative">
                         <Label htmlFor="password">Password</Label>
                         <Input
                             id="password"
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             value={user.password}
                             onChange={(e) =>
                                 setUser({ ...user, password: e.target.value })
                             }
                         />
+                        <button
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-2/3 transform -translate-y-1/2 text-gray-400"
+                        >
+                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
                     </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">

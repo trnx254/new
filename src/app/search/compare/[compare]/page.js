@@ -6,7 +6,6 @@ import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 import FavoriteIcon from "@/components/FavoriteIcon";
-import { getDataFromToken } from "@/helpers/getDataFromToken";
 
 const Page = ({ params }) => {
     const [dataItem, setDataItem] = useState({});

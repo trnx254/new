@@ -68,6 +68,12 @@ export async function POST(request) {
             );
         }
 
+        if (!user.isVerified) {
+            return NextResponse.json(
+                { message: "User not Verified. Please Verify." },
+                { status: 400 }
+            );
+        }
         //Check if password is correct
         const validPassword = await bcryptjs.compare(password, user.password);
         if (!validPassword) {
@@ -79,6 +85,7 @@ export async function POST(request) {
 
         // Cache user data in Redis
         await redis.set(email, JSON.stringify(user));
+        await redis.expire(email, 432000);
 
         //Create token data
         const tokenData = {
