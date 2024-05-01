@@ -20,7 +20,7 @@ To run Deal Checker locally, follow these steps:
     ```
 2. Navigate to the project directory.
     ```bash
-    cd deal-checker
+    cd College-Project-Minor
     ```
 3. Install dependencies.
     ```bash
@@ -41,6 +41,7 @@ To run Deal Checker locally, follow these steps:
     ```
 
     - Replace the placeholder values with your actual credentials.
+    - Replace the image file `img.jpg` in the `public` directory with your desired image.
 
 5. Run the development server.
     ```bash
@@ -51,6 +52,8 @@ To run Deal Checker locally, follow these steps:
 ## About
 
 ![Deal Checker](public/img.jpg)
+
+
 Deal Checker was created by Chandan Pradhan, a passionate developer dedicated to simplifying the online shopping experience. With a focus on user-centric design and seamless integration, Deal Checker aims to revolutionize the way users shop online in India.
 
 For more information, visit [Deal Checker Live Deployment.](https://deal-checker.vercel.app)
