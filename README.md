@@ -51,7 +51,7 @@ To run Deal Checker locally, follow these steps:
 
 ## About
 
-![Deal Checker](public/img.jpg)
+
 
 
 Deal Checker was created by Chandan Pradhan, a passionate developer dedicated to simplifying the online shopping experience. With a focus on user-centric design and seamless integration, Deal Checker aims to revolutionize the way users shop online in India.
